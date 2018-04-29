@@ -1,27 +1,32 @@
+lazy val commonSettings = Seq(
+  organization := "io.mangix",
+  version := "0.1",
+  scalaVersion := "2.12.6"
+)
+
 lazy val core = (project in file("donkey-core"))
   .settings(
-    organization := "io.mangix",
-    name := "donkey-core",
-    version := "0.1",
-    scalaVersion := "2.12.6")
+    commonSettings,
+    name := "donkey-core"
+  )
 
 lazy val protocol = (project in file("donkey-protocol"))
+  .dependsOn(core)
   .settings(
-    organization := "io.mangix",
-    name := "donkey-protocol",
-    version := "0.1",
-    scalaVersion := "2.12.6")
+    commonSettings,
+    name := "donkey-protocol"
+  )
 
 lazy val manager = (project in file("donkey-manager"))
+  .dependsOn(core)
   .settings(
-    organization := "io.mangix",
-    name := "donkey-manager",
-    version := "0.1",
-    scalaVersion := "2.12.6")
+    commonSettings,
+    name := "donkey-manager"
+  )
 
 lazy val container = (project in file("donkey-container"))
+  .dependsOn(manager, protocol)
   .settings(
-    organization := "io.mangix",
-    name := "donkey-container",
-    version := "0.1",
-    scalaVersion := "2.12.6")
+    commonSettings,
+    name := "donkey-container"
+  )
