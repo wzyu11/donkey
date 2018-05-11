@@ -17,15 +17,15 @@ lazy val protocol = (project in file("donkey-protocol"))
     name := "donkey-protocol"
   )
 
-lazy val manager = (project in file("donkey-manager"))
+lazy val agent = (project in file("donkey-agent"))
   .dependsOn(core)
   .settings(
     commonSettings,
-    name := "donkey-manager"
+    name := "donkey-agent"
   )
 
 lazy val container = (project in file("donkey-container"))
-  .dependsOn(manager, protocol)
+  .dependsOn(agent, protocol)
   .settings(
     commonSettings,
     name := "donkey-container"

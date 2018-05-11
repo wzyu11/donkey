@@ -7,6 +7,6 @@ package io.mangix.donkey
   * @author Nirvana
   * @version 1.0
   */
-package object manager {
+package object agent {
 
 }
