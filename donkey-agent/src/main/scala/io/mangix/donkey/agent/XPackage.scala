@@ -1,12 +1,12 @@
-package io.mangix.donkey
+package io.mangix.donkey.agent
 
 /**
-  * Date: 2018/4/30
+  * Date: 2018/5/14
   * Description:
   *
   * @author Nirvana
   * @version 1.0
   */
-package object agent {
+class XPackage {
 
 }

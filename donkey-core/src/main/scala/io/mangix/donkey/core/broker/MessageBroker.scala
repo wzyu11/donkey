@@ -1,9 +1,8 @@
 package io.mangix.donkey.core.broker
 
-import java.util.concurrent.ConcurrentHashMap
-
 import io.mangix.donkey.core.Message
 import io.mangix.donkey.core.subscriber.Subscriber
+
 
 /**
   * Date: 2018/5/12
@@ -13,26 +12,33 @@ import io.mangix.donkey.core.subscriber.Subscriber
   * @version 1.0
   */
 abstract class MessageBroker(messageSource: MessageSource) extends MessageSource {
-
-  private val subscribers: java.util.Set[Subscriber] = new ConcurrentHashMap[Subscriber, Boolean]().keySet(true)
-
   /**
     * do something before put message
     *
     * @param message the message
     */
-  def beforeMessage(message: Message)
+  def beforeMessage(message: Message): Unit = {}
 
   /**
     * do something after put message
     *
     * @param message the message
     */
-  def afterMessage(message: Message)
+  def afterMessage(message: Message): Unit ={}
 
-  def addSubscriber(subscriber: Subscriber): Unit = subscribers.add(subscriber)
+  /**
+    * add subscriber into this broker.
+    *
+    * @param subscriber the subscriber to add in.
+    */
+  def addSubscriber(subscriber: Subscriber): Unit
 
-  def removeSubscriber(subscriber: Subscriber): Unit = subscribers.remove(subscriber)
+  /**
+    * remove subscriber from this broker
+    *
+    * @param subscriber the subscriber to remove.
+    */
+  def removeSubscriber(subscriber: Subscriber): Unit
 
   /**
     * put a message into this message source

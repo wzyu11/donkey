@@ -9,6 +9,18 @@ package io.mangix.donkey.agent
   */
 trait Agent {
 
-  def onPackage(pkg:Package)
+  /**
+    * handle package that passed to this agent
+    *
+    * @param pkg the package
+    */
+  def onPackage(pkg: XPackage): Unit
+
+  /**
+    * send package to client
+    *
+    * @param pkg the package
+    */
+  def sendPackage(pkg: XPackage): Unit
 
 }
